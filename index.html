@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CTF Web - Missão H4x0r</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0d0d0d;
+      color: #33ff33;
+      font-family: 'Share Tech Mono', monospace;
+    }
+    .container {
+      padding: 40px;
+      max-width: 800px;
+      margin: auto;
+    }
+    .terminal {
+      background: #000000;
+      border: 1px solid #33ff33;
+      padding: 20px;
+      margin-top: 30px;
+      border-radius: 10px;
+      animation: fadeIn 1s ease-in-out;
+    }
+    .terminal p {
+      margin: 10px 0;
+    }
+    .input-area {
+      margin-top: 20px;
+    }
+    input[type="text"] {
+      width: 80%;
+      background: #1a1a1a;
+      border: 1px solid #33ff33;
+      color: #33ff33;
+      padding: 10px;
+      font-family: inherit;
+    }
+    button {
+      background-color: #1a1a1a;
+      border: 1px solid #33ff33;
+      color: #33ff33;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s ease-in-out;
+    }
+    button:hover {
+      transform: scale(1.1);
+    }
+    .success {
+      color: #00ff00;
+    }
+    .error {
+      color: #ff3333;
+    }
+    .hidden {
+      display: none;
+    }
+    #final-message {
+      margin-top: 20px;
+      padding: 20px;
+      border: 2px solid #00ff00;
+      border-radius: 10px;
+      display: none;
+      animation: glow 2s infinite alternate, fadeIn 2s ease-in-out;
+      background-color: #111;
+      text-align: center;
+    }
+    #final-message h1 {
+      font-size: 2.2em;
+      color: #66ff66;
+    }
+    @keyframes glow {
+      from { box-shadow: 0 0 10px #33ff33; }
+      to { box-shadow: 0 0 30px #00ff00; }
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔐 Desafio Web Hacking - Fase 1</h1>
+    <div class="terminal">
+      <p><strong>Recon:</strong> Descubra o caminho secreto do arquivo /flag.txt <br><strong>Dica:</strong> Caminho é literalmente "escondido"</p>
+      <div class="input-area">
+        <input type="text" id="f1" placeholder="Digite o caminho exato">
+        <button onclick="next(1)">Verificar</button>
+        <p id="r1"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Repetição de fases -->
+  <div class="container hidden" id="f2">
+    <h1>Fase 2: Base64</h1>
+    <div class="terminal">
+      <p>Decode: <code>U1RBR0U6IGNvbXByb21ldA==</code></p>
+      <div class="input-area">
+        <input type="text" id="f2i">
+        <button onclick="next(2)">Enviar</button>
+        <p id="r2"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container hidden" id="f3">
+    <h1>Fase 3: Binário</h1>
+    <div class="terminal">
+      <p>Traduza: <code>01101101 01100001 01110010 01101001 01100001</code></p>
+      <div class="input-area">
+        <input type="text" id="f3i">
+        <button onclick="next(3)">Verificar</button>
+        <p id="r3"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container hidden" id="f4">
+    <h1>Fase 4: Hexadecimal</h1>
+    <div class="terminal">
+      <p>Decode: <code>68 61 63 6b</code></p>
+      <div class="input-area">
+        <input type="text" id="f4i">
+        <button onclick="next(4)">Enviar</button>
+        <p id="r4"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container hidden" id="f5">
+    <h1>Fase 5: CSS Leak</h1>
+    <div class="terminal">
+      <p>Deixaram vazar a fonte secreta da empresa, veja se consegue identificar qual é a fonte no arquivo de estilização.</p>
+      <div class="input-area">
+        <input type="text" id="f5i">
+        <button onclick="next(5)">Enviar</button>
+        <p id="r5"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container hidden" id="f6">
+    <h1>Fase 6: HTML Comments</h1>
+    <div class="terminal">
+      <p>Veja o código-fonte e ache o comentário escondido 😉</p>
+      <!-- Tais sabidinha, né? Então bota ai: comentariohtml -->
+      <div class="input-area">
+        <input type="text" id="f6i">
+        <button onclick="next(6)">Enviar</button>
+        <p id="r6"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container hidden" id="f7">
+    <h1>Fase 7: JavaScript Trick</h1>
+    <div class="terminal">
+      <p>O dev besta deixou uma função secreta você consegue usar ela no console: <code>secret()</code></p>
+      <div class="input-area">
+        <input type="text" id="f7i">
+        <button onclick="next(7)">Enviar</button>
+        <p id="r7"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container hidden" id="f8">
+    <h1>Fase 8: Login Final</h1>
+    <div class="terminal">
+      <p>Usuário: admin | Senha: <br>Dica: Nome comum feminino brasileiro.</p>
+      <div class="input-area">
+        <input type="text" id="f8user" placeholder="Usuário">
+        <input type="text" id="f8pass" placeholder="Senha">
+        <button onclick="next(8)">Login</button>
+        <p id="r8"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container hidden" id="f9">
+    <h1>Fase 9: Última Pergunta 🎂</h1>
+    <div class="terminal">
+      <p>Qual o diminutivo de gato?</p>
+      <div class="input-area">
+        <input type="text" id="f9i">
+        <button onclick="next(9)">Responder</button>
+        <p id="r9"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" id="final-message">
+    <h1>🎉 PARABÉNS ΣM1LLY 🎉</h1>
+    <p>Você finalizou todas as fases com sucesso, princesa! Missão cumprida.</p>
+    <p>Hoje é um dia especial, pois celebramos a existência de alguém brilhante e cheia de energia: <strong>você mô</strong>! 🥳</p>
+    <p>Que sua jornada seja tão empolgante quanto um CTF, repleta de desafios superados e conquistas incríveis.</p>
+    <p>Continue hackeando a vida com amor, inteligência e sorrisos. 💚</p>
+    <p><strong>Feliz Aniversário, Amor! Te amo 💖🎂🎈</strong></p>
+  </div>
+
+  <script>
+    const fases = {
+      1: atob("L2hpZGRlbi9mbGFnLnR4dA=="),
+      2: atob("Y29tcHJvbWV0"),
+      3: atob("bWFyaWE="),
+      4: atob("aGFjaw=="),
+      5: atob("Zm9udHNlY3JldA=="),
+      6: atob("Y29tZW50YXJpb2h0bWw="),
+      7: atob("c2hhZG93cm9vdA=="),
+      8: { user: atob("YWRtaW4="), pass: atob("bWFyaWE=") },
+      9: atob("aGFydWtpbmhv")
+    };
+
+    function next(n) {
+      let input = document.getElementById(`f${n}i`)?.value?.toLowerCase().trim();
+      const resp = document.getElementById(`r${n}`);
+
+      if (n === 1) input = document.getElementById("f1").value.trim();
+      if (n === 8) {
+        const u = document.getElementById("f8user").value.trim().toLowerCase();
+        const p = document.getElementById("f8pass").value.trim().toLowerCase();
+        if (u === fases[8].user && p === fases[8].pass) {
+          document.getElementById("f9").classList.remove("hidden");
+          resp.innerHTML = `<span class='success'>Acesso concedido!</span>`;
+        } else {
+          resp.innerHTML = `<span class='error'>Login inválido</span>`;
+        }
+        return;
+      }
+      if (input === fases[n]) {
+        resp.innerHTML = `<span class='success'>Correto! Próxima fase desbloqueada!</span>`;
+        const nextPhase = document.getElementById(`f${n + 1}`);
+        if (nextPhase) nextPhase.classList.remove("hidden");
+        if (n === 9) document.getElementById("final-message").style.display = 'block';
+      } else {
+        resp.innerHTML = `<span class='error'>Tente novamente</span>`;
+      }
+    }
+
+    function secret() {
+      console.log(atob("c2hhZG93cm9vdA=="));
+    }
+  </script>
+</body>
+</html>
