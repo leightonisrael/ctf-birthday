@@ -91,7 +91,7 @@
     <h1>🔐 Desafio Web Hacking: 1604<br><br>
       Fase 1: Diretório</h1>
     <div class="terminal">
-      <p><strong>Recon:</strong> Descubra o caminho secreto do arquivo /flag.txt <br><strong>Dica:</strong> Caminho é literalmente "escondido"  <br><br>Flag: /******/flag.txt</p>
+      <p><strong>Recon:</strong> Descubra o caminho secreto do arquivo /flag.txt <br><strong>Dica:</strong> Caminho é literalmente escondido<br><br>Flag: /******/flag.txt</p>
       <div class="input-area">
         <input type="text" id="f1" placeholder="Digite o caminho exato" autocomplete="off">
         <button onclick="next(1)">Verificar</button>
@@ -104,7 +104,7 @@
   <div class="container hidden" id="f2">
     <h1>Fase 2: Base64</h1>
     <div class="terminal">
-      <p>Decode: <code>U1RBR0U6IGNvbXByb21ldA==</code><br><br>Flag: **********</p>
+      <p>Um grupo de terrorista deixou uma palavra encodada em Base64 descubra qual é a palavra e nos salve. Palavra encodada: <code>U1RBR0U6IGNvbXByb21ldA==</code><br><br>Flag: **********</p>
       <div class="input-area">
         <input type="text" id="f2i" autocomplete="off">
         <button onclick="next(2)">Enviar</button>
@@ -116,7 +116,7 @@
   <div class="container hidden" id="f3">
     <h1>Fase 3: Binário</h1>
     <div class="terminal">
-      <p>Traduza: <code>01101101 01100001 01110010 01101001 01100001</code><br><br>Flag: *****</p>
+      <p>Estamos na época das revoluções das máquina, por favor salve a gente desabilitando a central dele. Você basta traduzir isso: <code>01101101 01100001 01110010 01101001 01100001</code><br><br>Flag: *****</p>
       <div class="input-area">
         <input type="text" id="f3i" autocomplete="off">
         <button onclick="next(3)">Verificar</button>
@@ -128,7 +128,7 @@
   <div class="container hidden" id="f4">
     <h1>Fase 4: Hexadecimal</h1>
     <div class="terminal">
-      <p>Decode: <code>68 61 63 6b</code><br><br>Flag: ****</p>
+      <p>Van Gogh se fosse de cibersecurity seria assim: <code>68 61 63 6b 65 72</code><br><br>Flag: ******</p>
       <div class="input-area">
         <input type="text" id="f4i" autocomplete="off">
         <button onclick="next(4)">Enviar</button>
@@ -152,8 +152,9 @@
   <div class="container hidden" id="f6">
     <h1>Fase 6: HTML Comments</h1>
     <div class="terminal">
-      <p>Veja o código-fonte e ache o comentário escondido 😉<br><br>Flag: ***************</p>
-      <!-- Tais sabidinha, né? Então bota ai: comentariohtml -->
+      <p>As vezes os caras brincam tanto que esquece um comentário importante no código<br><br>Flag: ***************</p>
+      <!-- Zé: me passa a senha ai jão -->
+      <!-- Jão: tais sabidinho, né? Então bota ai: comentariohtml -->
       <div class="input-area">
         <input type="text" id="f6i" autocomplete="off">
         <button onclick="next(6)">Enviar</button>
@@ -165,7 +166,7 @@
   <div class="container hidden" id="f7">
     <h1>Fase 7: JavaScript Trick</h1>
     <div class="terminal">
-      <p>O dev besta deixou uma função secreta você consegue usar ela no console: <code>secret()</code><br><br>Flag: ***********</p>
+      <p>O dev besta deixou uma função secreta no código. Você consegue usar ela no console<br><br>Flag: ***********</p>
       <div class="input-area">
         <input type="text" id="f7i" autocomplete="off">
         <button onclick="next(7)">Enviar</button>
@@ -177,7 +178,7 @@
   <div class="container hidden" id="f8">
     <h1>Fase 8: Login Final</h1>
     <div class="terminal">
-      <p>Usuário: admin | Senha: *****<br>Dica: Nome comum feminino brasileiro.</p>
+      <p>Usuário: admin | Senha: *****<br>Dica: É um nome comum.</p>
       <div class="input-area">
         <input type="text" id="f8user" placeholder="Usuário" autocomplete="off">
         <input type="text" id="f8pass" placeholder="Senha" autocomplete="off">
@@ -190,7 +191,7 @@
   <div class="container hidden" id="f9">
     <h1>Fase 9: Última Pergunta 🎂</h1>
     <div class="terminal">
-      <p>Qual o diminutivo de gato?<br><br>Flag: *********</p>
+      <p>Qual o diminutivo de gato?<br><strong>Dica:</strong>Pergunte pre Emilly<br><br>Flag: *********</p>
       <div class="input-area">
         <input type="text" id="f9i" autocomplete="off">
         <button onclick="next(9)">Responder</button>
@@ -213,7 +214,7 @@
       1: atob("L2hpZGRlbi9mbGFnLnR4dA=="),
       2: atob("Y29tcHJvbWV0"),
       3: atob("bWFyaWE="),
-      4: atob("aGFjaw=="),
+      4: atob("aGFja2Vy"),
       5: atob("Zm9udHNlY3JldA=="),
       6: atob("Y29tZW50YXJpb2h0bWw="),
       7: atob("c2hhZG93cm9vdA=="),
